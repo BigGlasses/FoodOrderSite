@@ -1,12 +1,14 @@
 $space: 36px;
 
 #container {
-  width: 1000px;
+  min-width: 1000px;
   height: 800px;
   //flex-grow: 1;
   //flex: 1;
   display:flex;
   margin: auto;
+  box-sizing: border-box;
+  border-width: 0;
 
 }
 

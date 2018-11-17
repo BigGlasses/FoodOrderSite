@@ -1,36 +1,40 @@
 <!--<p>-->
-  <!--top-bar works!-->
+<!--top-bar works!-->
 <!--</p>-->
 <!--<mat-toolbar>-->
-  <!--<mat-toolbar-row>-->
-    <!--<a routerLink="/login">Login</a>-->
-  <!--</mat-toolbar-row>-->
-  <!--<mat-toolbar-row>-->
-    <!--<a routerLink="/home">Home</a>-->
-  <!--</mat-toolbar-row>-->
-  <!--<mat-toolbar-row>-->
-    <!--<a routerLink="/home/withdraw">Withdraw</a>-->
-  <!--</mat-toolbar-row>-->
-  <!--<mat-toolbar-row>-->
-    <!--<a routerLink="/home/deposit">Deposit</a>-->
-  <!--</mat-toolbar-row>-->
-  <!--<mat-toolbar-row>-->
-    <!--<a routerLink="/home/transfer">Transfer</a>-->
-  <!--</mat-toolbar-row>-->
+<!--<mat-toolbar-row>-->
+<!--<a routerLink="/login">Login</a>-->
+<!--</mat-toolbar-row>-->
+<!--<mat-toolbar-row>-->
+<!--<a routerLink="/home">Home</a>-->
+<!--</mat-toolbar-row>-->
+<!--<mat-toolbar-row>-->
+<!--<a routerLink="/home/withdraw">Withdraw</a>-->
+<!--</mat-toolbar-row>-->
+<!--<mat-toolbar-row>-->
+<!--<a routerLink="/home/deposit">Deposit</a>-->
+<!--</mat-toolbar-row>-->
+<!--<mat-toolbar-row>-->
+<!--<a routerLink="/home/transfer">Transfer</a>-->
+<!--</mat-toolbar-row>-->
 <!--</mat-toolbar>-->
 
 <mat-toolbar>
-  <mat-toolbar-row>
+  <mat-toolbar-row fxLayout="row" fxFlex="0 1 auto" fxFlexAlign="space-between">
+    <!--<div fxLayout="row" fxFlexAlign="space-between">-->
+      <div class="title"><h2>{{title}}</h2></div>
 
-    <button color="primary" mat-raised-button>Log Out</button>
+    <nav class="mr-5"  fxLayout="row" fxLayoutGap="20px">
+      <a routerLink="/login">Login</a>
+      <a routerLink="/home">Home</a>
+      <a routerLink="/home/withdraw">Withdraw</a>
+      <a routerLink="/home/deposit">Deposit</a>
+      <a routerLink="/home/transfer">Transfer</a>
+    </nav>
 
+      <button color="primary" mat-raised-button>Log Out</button>
+    <!--</div>-->
   </mat-toolbar-row>
 </mat-toolbar>
 
-<nav>
-  <a routerLink="/login">Login</a>
-  <a routerLink="/home">Home</a>
-  <a routerLink="/home/withdraw">Withdraw</a>
-  <a routerLink="/home/deposit">Deposit</a>
-  <a routerLink="/home/transfer">Transfer</a>
-</nav>
+

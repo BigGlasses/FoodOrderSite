@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppConfigService } from '../services/app-config.service';
 
 @Component({
   selector: 'bank-toolbar',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  title: string;
+
+  constructor(private appConfig: AppConfigService) {
+    this.title = this.appConfig.title;
+  }
 
   ngOnInit() {
   }
