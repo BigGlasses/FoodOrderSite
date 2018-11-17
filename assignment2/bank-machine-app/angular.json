@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "bank",
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "scss"
@@ -27,7 +27,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "./src/styles.scss"
             ],
             "scripts": []
           },
@@ -135,5 +136,29 @@
       }
     }
   },
-  "defaultProject": "bank-machine-app"
+  "defaultProject": "bank-machine-app",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss",
+      "spec": false
+    },
+    "@schematics/angular:class": {
+      "spec": false
+    },
+    "@schematics/angular:directive": {
+      "spec": false
+    },
+    "@schematics/angular:guard": {
+      "spec": false
+    },
+    "@schematics/angular:module": {
+      "spec": false
+    },
+    "@schematics/angular:pipe": {
+      "spec": false
+    },
+    "@schematics/angular:service": {
+      "spec": false
+    }
+  }
 }

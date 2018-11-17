@@ -1,0 +1,36 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 50%;
+
+  padding: 36px;
+  min-height: 300px;
+  max-height: 500px;
+
+  min-width: 450px;
+  max-width: 650px;
+
+  & > button {
+    width: 120px;
+    height: 48px;
+    margin-left: auto;
+  }
+
+  margin: auto;
+}
+
+//.login-container > * {
+//  width: 100%;
+//}
+
+#container {
+  width: 1000px;
+  height: 800px;
+  //flex-grow: 1;
+  //flex: 1;
+  display:flex;
+  margin: auto;
+
+}
