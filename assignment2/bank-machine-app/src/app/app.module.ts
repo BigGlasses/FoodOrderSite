@@ -15,6 +15,7 @@ import { AccountsComponent } from './screens/home/accounts/accounts.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from './common/common.module';
 import { ErrorComponent } from './error/error.component';
+import { CompleteComponent } from './complete/complete.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ErrorComponent } from './error/error.component';
     DepositComponent,
     TransferComponent,
     AccountsComponent,
-    ErrorComponent
+    ErrorComponent,
+    CompleteComponent
   ],
   imports: [
     BrowserModule,

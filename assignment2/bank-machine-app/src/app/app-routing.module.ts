@@ -39,6 +39,10 @@ const routes: Routes = [
     component: AccountsComponent
   },
   {
+    path: 'home/complete',
+    component: AccountsComponent
+  },
+  {
     path: '*',
     component: ErrorComponent
   }

@@ -18,15 +18,14 @@
 <!--</li>-->
 <!--</ul>-->
 
-<bank-toolbar></bank-toolbar>
+<div id="appContainer" fxLayout="column">
+  <bank-toolbar></bank-toolbar>
 
-<!--<h1>{{title}}</h1>-->
-<!--<nav>-->
-  <!--<a routerLink="/login">Login</a>-->
-<!--</nav>-->
 
   <div id=routerContent fxLayout="column" fxFlexAlign="center center">
     <!--<div id=routerContent fxLayout="row" fxLayoutAlign="center center" fxFlexFill>-->
     <router-outlet></router-outlet>
   </div>
-<!--<bank-bottom-bar></bank-bottom-bar>-->
+  <!--<bank-bottom-bar></bank-bottom-bar>-->
+
+</div>

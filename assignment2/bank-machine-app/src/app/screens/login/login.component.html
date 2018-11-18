@@ -1,5 +1,10 @@
 <div id="container">
 <mat-card class="login-container" fxFlex="column" fxFlexAlign="center center">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      {{title}}
+    </mat-toolbar-row>
+  </mat-toolbar>
   <mat-form-field>
     <input matInput placeholder="Account Number" [formControl]="accountNumber">
   </mat-form-field>

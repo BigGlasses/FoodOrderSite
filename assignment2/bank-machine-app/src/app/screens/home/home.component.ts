@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AppConfigService } from '../../services/app-config.service';
 
 @Component({
   selector: 'bank-home',
@@ -8,7 +9,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private appConfig: AppConfigService) {
+    // this.appConfig.
+  }
 
   ngOnInit() {
   }

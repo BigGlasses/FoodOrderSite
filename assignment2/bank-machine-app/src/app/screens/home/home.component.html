@@ -1,4 +1,18 @@
-<!--<div id="container" >-->
-<mat-card id="container" >
-</mat-card>
-<!--</div>-->
+<div id="container" fxLayout="column" fxFlexAlign="center center">
+  <!--<mat-card id="container" >-->
+  <!--</mat-card>-->
+
+
+  <div id="navContainer" fxLayout="column" fxLayoutGap="2em" LayoutAlign="center">
+    <!--<a mat-raised-button color="primary" routerLink="/login">Logout</a>-->
+    <div fxLayout="row" fxFlex="50%" fxFlex="50%"class="btn-row" fxLayoutGap=".5em" fxLayoutAlign="center">
+      <!--<a mat-raised-button color="primary" routerLink="/home">Home</a>-->
+      <a fxFlex="50%" mat-raised-button color="primary" routerLink="/home/withdraw">Withdraw</a>
+      <a fxFlex="50%" mat-raised-button color="primary" routerLink="/home/deposit">Deposit</a>
+    </div>
+    <div fxLayout="row" fxFlex="50%" class="btn-row" fxLayoutGap=".5em">
+      <a fxFlex="50%" mat-raised-button color="primary" routerLink="/home/transfer">Transfer</a>
+      <a fxFlex="50%" mat-raised-button color="primary" routerLink="/home/accounts">Check Balance</a>
+    </div>
+  </div>
+</div>

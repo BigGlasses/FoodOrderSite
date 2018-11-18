@@ -1,5 +1,10 @@
 $space: 36px;
 
+#appContainer {
+  height: 100vh;
+  //height: 100%;
+  width: 100vw;
+}
 
 #routerContent {
   border: 2px solid rgba(0, 0, 0, 0.64);
@@ -15,12 +20,15 @@ $space: 36px;
   //min-height: 800px;
   //min-width: 1000px;
 
-  height: 804px;
-  //height: 800px;
-  width: 1004px;
+  //height: 804px;
+  //width: 1004px;
+  height: 100%;
+  width: 100%;
   margin: auto;
+  overflow: hidden;
+  justify-content: center;
   //padding: 16px;
-  margin-top: 26px;
+  //margin-top: 26px;
   //background-color: ;
 }
 

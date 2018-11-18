@@ -1,3 +1,45 @@
-<p>
-  accounts works!
-</p>
+<mat-card class="screen-container" fxFlex="column" fxFlexAlign="center center">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      {{title}}
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <!--<form class="form-container" [formGroup]="options">-->
+  <!--<mat-form-field>-->
+  <!--&lt;!&ndash;<mat-select placeholder="Color" [formControl]="account" formControlName="color">&ndash;&gt;-->
+  <!--<mat-select placeholder="From Account" label="Account" formControlName="fromAccount">-->
+  <!--<mat-option *ngFor="let account of user.accounts" [value]="account.id">-->
+  <!--<div fxLayout="row" fxLayoutAlign="space-between">-->
+  <!--<div>{{account.type + ' '}}</div>-->
+  <!--<div>${{account.balance}}</div>-->
+  <!--</div>-->
+  <!--</mat-option>-->
+  <!--</mat-select>-->
+  <!--</mat-form-field>-->
+
+  <div fxLayout="row" fxLayoutAlign="space-between" *ngFor="let account of user.accounts">
+    <div>{{account.type + ' '}}</div>
+    <div>${{account.balance}}</div>
+  </div>
+
+  <div>
+    <mat-divider></mat-divider>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <div>Total</div>
+    <div>${{user.totalBalance()}}</div>
+  </div>
+
+  <!--<mat-form-field>-->
+  <!--<input matInput placeholder="Amount" formControlName="amount">-->
+  <!--</mat-form-field>-->
+
+  <!--</form>-->
+
+  <div id="controls">
+    <button id="cancel" color="primary" mat-raised-button (click)="cancel()">Done</button>
+    <!--<button id="enter" color="primary" mat-raised-button (click)="enter()">Enter</button>-->
+  </div>
+
+</mat-card>

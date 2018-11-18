@@ -1,8 +1,10 @@
 $space: 36px;
 
 #container {
-  min-width: 1000px;
-  height: 800px;
+  //min-width: 1000px;
+  //height: 800px;
+  height: 100%;
+  width: 100%;
   //flex-grow: 1;
   //flex: 1;
   display:flex;
@@ -31,4 +33,34 @@ $space: 36px;
   height: 100%;
   //width;: 100%;
   display: flex;
+}
+
+.nav-button {
+  min-width: 80px;
+  //max-width: 70%;
+  min-height: 60px;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  align-items:center ;
+  //margin: auto 0;
+  //flex: 1;
+  vertical-align: middle;
+  height: 30vh;
+  font-size: 1em;
+  font-size: 4vw;
+}
+
+#navContainer {
+  width: 80%;
+  align-self: center;
+  height: 100%;
+  & a {
+    @extend .nav-button;
+  }
+}
+
+
+.btn-row {
+  //height: 30vh;
 }

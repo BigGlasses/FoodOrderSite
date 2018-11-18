@@ -22,17 +22,21 @@
 <mat-toolbar>
   <mat-toolbar-row fxLayout="row" fxFlex="0 1 auto" fxFlexAlign="space-between">
     <!--<div fxLayout="row" fxFlexAlign="space-between">-->
-      <div class="title"><h2>{{title}}</h2></div>
+    <div class="title"><h2>{{title}}</h2></div>
 
-    <nav class="mr-5"  fxLayout="row" fxLayoutGap="20px">
+    <nav class="mr-5" fxLayout="row" fxLayoutGap="20px">
       <a routerLink="/login">Login</a>
-      <a routerLink="/home">Home</a>
-      <a routerLink="/home/withdraw">Withdraw</a>
+      <!--<div fxLayout="row">-->
+        <a routerLink="/home">Home</a>
+        <a routerLink="/home/withdraw">Withdraw</a>
+      <!--</div>-->
+      <!--<div fxLayout="row">-->
       <a routerLink="/home/deposit">Deposit</a>
       <a routerLink="/home/transfer">Transfer</a>
+      <!--</div>-->
     </nav>
 
-      <button color="primary" mat-raised-button>Log Out</button>
+    <button color="primary" mat-raised-button (click)="logout()">Log Out</button>
     <!--</div>-->
   </mat-toolbar-row>
 </mat-toolbar>
