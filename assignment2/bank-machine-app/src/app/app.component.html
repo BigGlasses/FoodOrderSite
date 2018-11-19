@@ -22,7 +22,8 @@
   <bank-toolbar></bank-toolbar>
 
 
-  <div id=routerContent [@routeAnimations]="prepareRoute(outlet)" fxLayout="column" fxFlexAlign="center center">
+  <div id=routerContent [@routeAnimations]="prepareRoute(outlet)" >
+  <!--<div id=routerContent [@routeAnimations]="prepareRoute(outlet)" fxLayout="column" fxFlexAlign="center center">-->
     <!--<div id=routerContent fxLayout="row" fxLayoutAlign="center center" fxFlexFill>-->
     <router-outlet #outlet="outlet"></router-outlet>
   </div>

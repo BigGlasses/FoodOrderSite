@@ -6,6 +6,11 @@ $space: 36px;
   width: 100vw;
 }
 
+::ng-deep router-outlet ~ * {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 #routerContent {
   border: 2px solid rgba(0, 0, 0, 0.64);
   //border: 2px solid #1bad97;
@@ -24,12 +29,18 @@ $space: 36px;
   //width: 1004px;
   height: 100%;
   width: 100%;
-  margin: auto;
+  //margin: auto;
   overflow: hidden;
-  justify-content: center;
+
+  //display: flex;
+  //flex-direction: row;
+  //justify-content: center;
+  //flex: 1;
+  //
   //padding: 16px;
   //margin-top: 26px;
   //background-color: ;
+  position: relative;
 }
 
 //.hidden-router {

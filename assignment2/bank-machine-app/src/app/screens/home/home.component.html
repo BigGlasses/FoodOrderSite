@@ -1,18 +1,53 @@
-<div id="container" fxLayout="column" fxFlexAlign="center center">
-  <!--<mat-card id="container" >-->
-  <!--</mat-card>-->
+<!--<div id="container" fxLayout="column" fxFlexAlign="center center">-->
+<!--&lt;!&ndash;<mat-card id="container" >&ndash;&gt;-->
+<!--&lt;!&ndash;</mat-card>&ndash;&gt;-->
 
 
-  <div id="navContainer" fxLayout="column" fxLayoutGap="2em" LayoutAlign="center">
+<!--<div id="navContainer" fxLayout="column" fxLayoutGap="2em" LayoutAlign="center">-->
+<!--&lt;!&ndash;<a mat-raised-button color="primary" routerLink="/login">Logout</a>&ndash;&gt;-->
+<!--<div fxLayout="row" fxFlex="50%" fxFlex="50%"class="btn-row" fxLayoutGap=".5em" fxLayoutAlign="center">-->
+<!--&lt;!&ndash;<a mat-raised-button color="primary" routerLink="/home">Home</a>&ndash;&gt;-->
+<!--<a fxFlex="50%" mat-raised-button color="primary" routerLink="/home/withdraw">Withdraw</a>-->
+<!--<a fxFlex="50%" mat-raised-button color="primary" routerLink="/home/deposit">Deposit</a>-->
+<!--</div>-->
+<!--<div fxLayout="row" fxFlex="50%" class="btn-row" fxLayoutGap=".5em">-->
+<!--<a fxFlex="50%" mat-raised-button color="primary" routerLink="/home/transfer">Transfer</a>-->
+<!--<a fxFlex="50%" mat-raised-button color="primary" routerLink="/home/accounts">Check Balance</a>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<mat-card class="screen-container" fxFlex="column" fxFlexAlign="center center">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      {{title}}
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="content-container" fxLayout="column" fxFlexAlign="center center" fxLayoutGap="1em">
+    <!--<mat-card id="container" >-->
+    <!--</mat-card>-->
+
+
+    <!--<div fxLayout="row" class="btn-row" fxLayoutGap=".5em" fxLayoutAlign="center center">-->
+      <!--&lt;!&ndash;<div fxLayout="row" fxFlex="50%"class="btn-row" fxLayoutGap=".5em" fxLayoutAlign="center">&ndash;&gt;-->
+      <!--&lt;!&ndash;<a mat-raised-button color="primary" routerLink="/home">Home</a>&ndash;&gt;-->
+      <!--<div><a mat-raised-button color="primary" routerLink="/home/withdraw">Withdraw</a></div>-->
+      <!--<div><a mat-raised-button color="primary" routerLink="/home/deposit">Deposit</a></div>-->
+    <!--</div>-->
+
+    <!--<div id="navContainer" fxLayout="column" fxLayoutGap="2em" LayoutAlign="center">-->
     <!--<a mat-raised-button color="primary" routerLink="/login">Logout</a>-->
-    <div fxLayout="row" fxFlex="50%" fxFlex="50%"class="btn-row" fxLayoutGap=".5em" fxLayoutAlign="center">
+    <div fxLayout="row" fxFlex="50%" class="btn-row" fxLayoutGap=".5em" fxLayoutAlign="center center">
+    <!--<div fxLayout="row" fxFlex="50%"class="btn-row" fxLayoutGap=".5em" fxLayoutAlign="center">-->
       <!--<a mat-raised-button color="primary" routerLink="/home">Home</a>-->
-      <a fxFlex="50%" mat-raised-button color="primary" routerLink="/home/withdraw">Withdraw</a>
-      <a fxFlex="50%" mat-raised-button color="primary" routerLink="/home/deposit">Deposit</a>
+      <a fxFlex="50%" class="mat-elevation-z8" mat-raised-button color="primary" routerLink="/home/withdraw">Withdraw</a>
+      <a fxFlex="50%" class="mat-elevation-z8" mat-raised-button color="primary" routerLink="/home/deposit">Deposit</a>
     </div>
-    <div fxLayout="row" fxFlex="50%" class="btn-row" fxLayoutGap=".5em">
-      <a fxFlex="50%" mat-raised-button color="primary" routerLink="/home/transfer">Transfer</a>
-      <a fxFlex="50%" mat-raised-button color="primary" routerLink="/home/accounts">Check Balance</a>
+    <div fxLayout="row" fxFlex="50%" class="btn-row" fxLayoutGap=".5em" fxLayoutAlign="center center">
+    <!--<div fxLayout="row" fxFlex="50%" class="btn-row" fxLayoutGap=".5em">-->
+      <a fxFlex="50%" class="mat-elevation-z8" mat-raised-button color="primary" routerLink="/home/transfer">Transfer</a>
+      <a fxFlex="50%" class="mat-elevation-z8" mat-raised-button color="primary" routerLink="/home/accounts">Check Balance</a>
     </div>
+    <!--</div>-->
   </div>
-</div>
+</mat-card>
+
