@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class AppConfigService {
   pastHome = false;
   user: object;
   screenTitle: string;
+  txSuccessful = false;
 
   constructor(private router: Router) { }
 
@@ -18,6 +20,7 @@ export class AppConfigService {
   }
 
   actionComplete() {
-    this.router.navigateByUrl('/home/complete');
+    this.txSuccessful = true;
+    this.router.navigateByUrl('/home/accounts');
   }
 }

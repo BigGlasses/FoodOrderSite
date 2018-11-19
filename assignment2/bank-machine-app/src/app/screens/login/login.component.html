@@ -1,18 +1,28 @@
-<div id="container">
+<!--<div id="container">-->
 <mat-card class="login-container" fxFlex="column" fxFlexAlign="center center">
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#fff" type="ball-spin"></ngx-spinner>
+  <!--<mat-card class="login-container" fxFlex="column" fxFlexAlign="center center">-->
   <mat-toolbar color="primary">
     <mat-toolbar-row>
       {{title}}
     </mat-toolbar-row>
   </mat-toolbar>
-  <mat-form-field>
-    <input matInput placeholder="Account Number" [formControl]="accountNumber">
-  </mat-form-field>
 
-  <mat-form-field>
-    <input matInput placeholder="PIN" [formControl]="pin">
-  </mat-form-field>
+  <div class="content-container">
+    <div class="form-container">
+      <mat-form-field>
+        <input matInput type="number" placeholder="Account Number" [formControl]="accountNumber">
+      </mat-form-field>
 
-  <button color="primary" mat-raised-button (click)="login()">Enter</button>
+      <mat-form-field>
+        <input matInput type="number" placeholder="PIN" [formControl]="pin">
+        <mat-error *ngIf="pin.hasError('wrongPin')">Wrong PIN</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div id="controls">
+      <button color="primary" mat-raised-button (click)="login()">Enter</button>
+    </div>
+  </div>
 </mat-card>
-</div>
+<!--</div>-->

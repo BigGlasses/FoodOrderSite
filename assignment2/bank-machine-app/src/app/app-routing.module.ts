@@ -12,35 +12,43 @@ import { ErrorComponent } from './error/error.component';
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    data: {state: 'login'}
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    data: {state: 'home'}
   },
   {
     path: 'home/withdraw',
-    component: WithdrawComponent
+    component: WithdrawComponent,
+    data: {state: 'pastHome'}
   },
   {
     path: 'home/deposit',
-    component: DepositComponent
+    component: DepositComponent,
+    data: {state: 'pastHome'}
   },
   {
     path: 'home/transfer',
-    component: TransferComponent
+    component: TransferComponent,
+    data: {state: 'pastHome'}
   },
   {
     path: 'home/accounts',
-    component: AccountsComponent
+    component: AccountsComponent,
+    data: {state: 'complete'}
   },
   {
     path: 'home/complete',
-    component: AccountsComponent
+    component: AccountsComponent,
+    data: {state: 'complete'}
   },
   {
     path: '*',

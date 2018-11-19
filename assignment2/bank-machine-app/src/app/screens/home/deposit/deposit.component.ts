@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { TransactionService } from '../../../services/transaction.service';
 import { AuthService } from '../../../services/auth.service';
 import { AppConfigService } from '../../../services/app-config.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'bank-deposit',
@@ -20,7 +21,8 @@ export class DepositComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private tx: TransactionService,
               private auth: AuthService,
-              private config: AppConfigService) {
+              private config: AppConfigService,
+              private spinner: NgxSpinnerService) {
     this.config.screenTitle = this.title;
     this.config.pastHome = true;
 
@@ -28,7 +30,7 @@ export class DepositComponent implements OnInit {
     console.log(this.title, 'user: ', this.user);
     this.options = this.fb.group({
       toAccount: '',
-      amount: 0
+      amount: ''
     });
   }
 
@@ -40,9 +42,16 @@ export class DepositComponent implements OnInit {
     let amount = +this.options.get('amount').value;
     console.log('accountId: ', accountId, 'amount:', amount);
 
+    this.spinner.show();
     this.tx.deposit(accountId, amount);
 
-    this.config.actionComplete();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+      this.config.actionComplete();
+    }, 2000);
+
   }
 
   cancel() {

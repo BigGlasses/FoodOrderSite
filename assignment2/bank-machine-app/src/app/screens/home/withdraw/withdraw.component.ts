@@ -4,6 +4,7 @@ import { AuthService } from '../../../services/auth.service';
 import { User } from '../../../data/bank';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AppConfigService } from '../../../services/app-config.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'bank-withdraw',
@@ -20,7 +21,8 @@ export class WithdrawComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private tx: TransactionService,
               private auth: AuthService,
-              private config: AppConfigService) {
+              private config: AppConfigService,
+              private spinner: NgxSpinnerService) {
     this.config.screenTitle = this.title;
     this.config.pastHome = true;
 
@@ -42,7 +44,13 @@ export class WithdrawComponent implements OnInit {
 
     this.tx.withdraw(accountId, amount);
 
-    this.config.actionComplete();
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+      this.config.actionComplete();
+    }, 2000);
   }
 
   cancel() {

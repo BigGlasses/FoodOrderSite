@@ -30,8 +30,13 @@ export class AuthService {
     return null;
   }
 
+  isLoggedIn() {
+    return !!this.currentUser;
+  }
+
   public logout() {
     this.currentUser = null;
+    this.data.putInStorage(this.key, null);
     this.router.navigateByUrl('/login');
   }
 

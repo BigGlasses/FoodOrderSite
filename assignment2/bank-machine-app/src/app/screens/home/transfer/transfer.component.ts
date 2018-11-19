@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { TransactionService } from '../../../services/transaction.service';
 import { AppConfigService } from '../../../services/app-config.service';
 import { AuthService } from '../../../services/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'bank-transfer',
@@ -20,7 +21,8 @@ export class TransferComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private tx: TransactionService,
               private auth: AuthService,
-              private config: AppConfigService) {
+              private config: AppConfigService,
+              private spinner: NgxSpinnerService) {
     this.config.screenTitle = this.title;
     this.config.pastHome = true;
 
@@ -42,9 +44,15 @@ export class TransferComponent implements OnInit {
     const amount = +this.options.get('amount').value;
     console.log('from: ', fromId, 'amount:', amount);
 
+    this.spinner.show();
     this.tx.transfer(fromId, toId, amount);
 
-    this.config.actionComplete();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+      this.config.actionComplete();
+    }, 2000);
   }
 
   cancel() {

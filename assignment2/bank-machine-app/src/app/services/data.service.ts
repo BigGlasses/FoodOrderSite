@@ -37,6 +37,10 @@ export class DataService {
   }
 
   putInStorage(key, data) {
+    if (data === null) {
+      localStorage.removeItem(key);
+      return;
+    }
     localStorage.setItem(this.key + key, JSON.stringify(data));
 
   }

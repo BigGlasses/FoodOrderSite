@@ -4,28 +4,35 @@
       {{title}}
     </mat-toolbar-row>
   </mat-toolbar>
-  <form class="form-container" [formGroup]="options">
-    <mat-form-field>
-      <!--<mat-select placeholder="Color" [formControl]="account" formControlName="color">-->
-      <mat-select placeholder="From Account" label="Account" formControlName="toAccount">
-        <mat-option *ngFor="let account of user.accounts" [value]="account.id">
-          <div fxLayout="row" fxLayoutAlign="space-between">
-            <div>{{account.type + ' '}}</div>
-            <div>${{account.balance}}</div>
-          </div>
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#fff" type="ball-spin"></ngx-spinner>
 
-    <mat-form-field>
-      <input matInput placeholder="Amount" formControlName="amount">
-    </mat-form-field>
+  <div class="content-container">
 
-  </form>
+    <!--<div class="form-container" fxLayoutAlign="space-between" fxLayout="column">-->
+    <form class="form-container" [formGroup]="options">
+      <mat-form-field>
+        <!--<mat-select placeholder="Color" [formControl]="account" formControlName="color">-->
+        <mat-select placeholder="From Account" label="Account" formControlName="toAccount">
+          <mat-option *ngFor="let account of user.accounts" [value]="account.id">
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <div>{{account.type + ' '}}</div>
+              <div>${{account.balance}}</div>
+            </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-  <div id="controls">
-    <button id="cancel" color="warn" mat-raised-button (click)="cancel()">Cancel</button>
-    <button id="enter" color="primary" mat-raised-button (click)="enter()">Enter</button>
+      <mat-form-field>
+        <input matInput placeholder="Amount" type="number" formControlName="amount">
+        <span matPrefix>$&nbsp;</span>
+      </mat-form-field>
+
+    </form>
+
+    <div id="controls">
+      <button id="cancel" color="warn" mat-raised-button (click)="cancel()">Cancel</button>
+      <button id="enter" color="primary" mat-raised-button (click)="enter()">Enter</button>
+    </div>
   </div>
 
 </mat-card>

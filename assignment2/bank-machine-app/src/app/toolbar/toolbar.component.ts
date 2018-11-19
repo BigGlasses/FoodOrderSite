@@ -31,4 +31,7 @@ export class ToolbarComponent implements OnInit {
 
   }
 
+  isLoggedIn() {
+    return !!this.auth.currentUser;
+  }
 }

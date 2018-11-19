@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from './common/common.module';
 import { ErrorComponent } from './error/error.component';
 import { CompleteComponent } from './complete/complete.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CompleteComponent } from './complete/complete.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CommonModule
+    CommonModule,
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

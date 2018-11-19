@@ -17,29 +17,33 @@
   <!--</mat-select>-->
   <!--</mat-form-field>-->
 
-  <div fxLayout="row" fxLayoutAlign="space-between" *ngFor="let account of user.accounts">
-    <div>{{account.type + ' '}}</div>
-    <div>${{account.balance}}</div>
+  <div class="content-container">
+
+    <div class="form-container" fxLayoutAlign="space-between" fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="space-between" *ngFor="let account of user.accounts">
+      <div>{{account.type + ' '}}</div>
+      <div>${{account.balance}}</div>
+    </div>
+
+    <div>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="space-between">
+      <div>Total</div>
+      <div>${{user.totalBalance()}}</div>
+    </div>
   </div>
+    <!--<mat-form-field>-->
+    <!--<input matInput placeholder="Amount" formControlName="amount">-->
+    <!--</mat-form-field>-->
 
-  <div>
-    <mat-divider></mat-divider>
+    <!--</form>-->
+
+    <div id="controls">
+      <button id="cancel" color="primary" mat-raised-button (click)="cancel()">Done</button>
+      <!--<button id="enter" color="primary" mat-raised-button (click)="enter()">Enter</button>-->
+    </div>
+
   </div>
-
-  <div fxLayout="row" fxLayoutAlign="space-between">
-    <div>Total</div>
-    <div>${{user.totalBalance()}}</div>
-  </div>
-
-  <!--<mat-form-field>-->
-  <!--<input matInput placeholder="Amount" formControlName="amount">-->
-  <!--</mat-form-field>-->
-
-  <!--</form>-->
-
-  <div id="controls">
-    <button id="cancel" color="primary" mat-raised-button (click)="cancel()">Done</button>
-    <!--<button id="enter" color="primary" mat-raised-button (click)="enter()">Enter</button>-->
-  </div>
-
 </mat-card>
