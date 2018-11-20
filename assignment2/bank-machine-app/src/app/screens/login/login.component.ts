@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../data/bank';
@@ -13,7 +13,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class LoginComponent implements OnInit {
   title = 'Login';
 
-  accountNumber = new FormControl('');
+  accountNumber = new FormControl('', Validators.compose([
+    Validators.required,
+    Validators.pattern('[0-9]?')
+  ]));
+  // accountNumber = new FormControl('');
   pin = new FormControl('');
 
   constructor(private auth: AuthService,
@@ -40,8 +44,12 @@ export class LoginComponent implements OnInit {
         return;
       }
       this.router.navigate(['/home']);
-    }, 2000);
+    }, 1000);
 
+
+  }
+
+  valid() {
 
   }
 }

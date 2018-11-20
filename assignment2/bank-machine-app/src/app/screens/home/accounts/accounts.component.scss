@@ -1,1 +1,33 @@
 @import "../../screen-styles";
+
+
+.tx-table {
+  margin-left: 1em;
+}
+
+.tx-table-title {
+  font-size: .8em;
+  //font-weight: bold;
+}
+
+.tx-row-header {
+  font-size: .6em;
+  font-weight: normal;
+}
+.tx-row {
+  font-size: .6em;
+  font-weight: lighter;
+
+  & > td {
+    width: 15%;
+    min-width: 70px;
+  }
+  & > td:first-child {
+    width: 15%;
+    min-width: 100px;
+
+    //& > :first-child {
+    //  max-width: 100px;
+    //}
+  }
+}

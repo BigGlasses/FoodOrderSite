@@ -1,7 +1,9 @@
 <!--<div id="container">-->
-<mat-card class="login-container" fxFlex="column" fxFlexAlign="center center">
-  <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#fff" type="ball-spin"></ngx-spinner>
+<!--<mat-card class="container-fluid p-0" fxFlex="column" fxFlexAlign="center center">-->
+<mat-card class="screen-container" fxFlex="column" fxFlexAlign="center center">
+  <!--<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="large" color="#fff" type="ball-spin"></ngx-spinner>-->
   <!--<mat-card class="login-container" fxFlex="column" fxFlexAlign="center center">-->
+  <!--<div class="col">-->
   <mat-toolbar color="primary">
     <mat-toolbar-row>
       {{title}}
@@ -11,18 +13,19 @@
   <div class="content-container">
     <div class="form-container">
       <mat-form-field>
-        <input matInput type="number" placeholder="Account Number" [formControl]="accountNumber">
+        <input matInput type="number" pattern="[0-9]*" placeholder="Account Number" [formControl]="accountNumber">
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput type="number" placeholder="PIN" [formControl]="pin">
+        <input matInput type="password" pattern="[0-9]*" placeholder="PIN" [formControl]="pin">
         <mat-error *ngIf="pin.hasError('wrongPin')">Wrong PIN</mat-error>
       </mat-form-field>
     </div>
 
     <div id="controls">
-      <button color="primary" mat-raised-button (click)="login()">Enter</button>
+      <button color="primary" mat-raised-button [disabled]="accountNumber.value === '' || pin.value === ''" (click)="login()">Enter</button>
     </div>
+  <!--</div>-->
   </div>
 </mat-card>
 <!--</div>-->

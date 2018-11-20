@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../../data/bank';
+import { Transaction, User } from '../../../data/bank';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TransactionService } from '../../../services/transaction.service';
 import { AuthService } from '../../../services/auth.service';
@@ -41,7 +41,7 @@ export class AccountsComponent implements OnInit {
         this.config.txSuccessful = false;
         this.openSnackBar('Transaction Successful!', 'OK');
       }
-    }, 1000);
+    }, 500);
   }
 
   openSnackBar(message: string, action: string) {
@@ -57,5 +57,18 @@ export class AccountsComponent implements OnInit {
 
   cancel() {
     this.config.goHome();
+  }
+
+  getAccountType(user: User, id) {
+    let a = user.accounts[id];
+    return a ? a.type : '-';
+  }
+
+  inOrOutAmountFormat(account: Account, tx: Transaction) {
+    return +account.id == tx.from ? `(${tx.amount})` : tx.amount;
+  }
+
+  balanceWrapper(balance: number) {
+    return balance < 0 ? `(${-1*balance})` : balance;
   }
 }

@@ -21,7 +21,7 @@ export class AppComponent {
   }
 
   prepareRoute(outlet: RouterOutlet) {
-    console.log('Router state: ', outlet.activatedRouteData['state']);
+    // console.log('Router state: ', outlet.activatedRouteData['state']);
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['state'];
     // return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }

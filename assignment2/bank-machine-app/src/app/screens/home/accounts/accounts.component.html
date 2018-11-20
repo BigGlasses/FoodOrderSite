@@ -19,21 +19,47 @@
 
   <div class="content-container">
 
-    <div class="form-container" fxLayoutAlign="space-between" fxLayout="column">
-    <div fxLayout="row" fxLayoutAlign="space-between" *ngFor="let account of user.accounts">
-      <div>{{account.type + ' '}}</div>
-      <div>${{account.balance}}</div>
-    </div>
+    <div class="form-container" fxLayoutAlign="space-between" fxLayout="column" fxLayoutGap="8px">
+      <div fxLayout="column" fxLayoutAlign="space-between" *ngFor="let account of user.accounts" >
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <div>{{account.type + ' '}}</div>
+          <div>${{balanceWrapper(account.balance)}}</div>
+        </div>
+        <div>
+          <mat-divider></mat-divider>
+        </div>
+          <div class="tx-table-title">Transactions</div>
+        <table class="tx-table" >
+        <!--<table class="tx-table" fxLayout="column" fxLayoutAlign="start">-->
 
-    <div>
-      <mat-divider></mat-divider>
-    </div>
+          <thead class="tx-row-header" >
+          <!--<thead class="tx-row-header" fxLayout="row" fxLayoutAlign="space-between">-->
+            <td>Date</td>
+            <td>Type</td>
+            <td>From</td>
+            <td>To</td>
+            <td>Amount</td>
+          </thead>
+          <!--<tr class="tx-row" *ngFor="let tx of account.transactions" fxLayout="row" fxLayoutAlign="space-between">-->
+          <tr class="tx-row" *ngFor="let tx of account.transactions">
+            <td>{{tx.date | date: 'short'}}</td>
+            <td>{{tx.type}}</td>
+            <td>{{getAccountType(user, tx.from)}}</td>
+            <td>{{getAccountType(user, tx.to)}}</td>
+            <td>{{inOrOutAmountFormat(account, tx)}}</td>
+          </tr>
+        </table>
+      </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between">
-      <div>Total</div>
-      <div>${{user.totalBalance()}}</div>
+      <div>
+        <mat-divider></mat-divider>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <div>Total</div>
+        <div>${{user.totalBalance()}}</div>
+      </div>
     </div>
-  </div>
     <!--<mat-form-field>-->
     <!--<input matInput placeholder="Amount" formControlName="amount">-->
     <!--</mat-form-field>-->

@@ -58,4 +58,10 @@ export class TransferComponent implements OnInit {
   cancel() {
     this.config.goHome();
   }
+
+  valid() {
+    return this.options.get('toAccount').value !== '' &&
+      this.options.get('fromAccount').value !== '' &&
+      this.options.get('amount').value !== '';
+  }
 }

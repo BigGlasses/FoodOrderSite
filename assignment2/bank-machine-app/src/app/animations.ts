@@ -1,7 +1,7 @@
-import { trigger, stagger, animate, style, group, query, transition, keyframes, animateChild } from '@angular/animations';
-// import { trigger, stagger, animate, style, group, query as q, transition, keyframes } from '@angular/animations';
+// import { trigger, stagger, animate, style, group, query, transition, keyframes, animateChild } from '@angular/animations';
+import { trigger, stagger, animate, style, group, query as q, transition, keyframes, animateChild } from '@angular/animations';
 
-// const query = (s, a, o = {optional: true}) => q(s, a, o);
+const query = (s, a, o = {optional: true}) => q(s, a, o);
 
 export const normalTransitionIn = [
   style({position: 'relative'}),
@@ -59,7 +59,7 @@ const slideInSteps = [
   /* order */
   // /* 1 */ query(':enter, :leave', style({ })
   // /* 1 */ query(':enter, :leave', style({width: '100%', height: '100%'})
-  /* 1 */ query(':enter, :leave', style({ position: 'fixed',width: '100%'})
+  /* 1 */ query(':enter, :leave', style({ position: 'fixed', width: '100%'})
   // /* 1 */ query(':enter, :leave', style({ position: 'absolute', width: '100%', height: '100%'})
   // /* 1 */ query(':enter, :leave', style({position: 'relative', width: '100%'})
   // /* 1 */ query(':enter, :leave', style({position: 'fixed', width: '100%'})

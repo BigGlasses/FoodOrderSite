@@ -50,10 +50,14 @@ export class WithdrawComponent implements OnInit {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
       this.config.actionComplete();
-    }, 2000);
+    }, 1000);
   }
 
   cancel() {
     this.config.goHome();
+  }
+
+  valid() {
+    return this.options.get('fromAccount').value !== '' && this.options.get('amount').value !== '';
   }
 }

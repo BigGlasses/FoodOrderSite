@@ -19,6 +19,7 @@ export class AuthService {
     let user = this.data.getUser(accountId);
     if (!user) {
       user = this.data.createUser(accountId, pin);
+      user.init();
     }
 
     if (user.pin === pin) {

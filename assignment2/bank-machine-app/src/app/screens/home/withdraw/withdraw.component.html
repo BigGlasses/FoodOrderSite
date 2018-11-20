@@ -24,15 +24,23 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="Amount" type="number" formControlName="amount">
+        <input matInput placeholder="Amount" type="number" formControlName="amount" [matAutocomplete]="auto">
         <span matPrefix>$&nbsp;</span>
       </mat-form-field>
+
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option [value]=100>100</mat-option>
+        <mat-option [value]=500>500</mat-option>
+        <mat-option [value]=1000>1000</mat-option>
+        <mat-option [value]=5000>5000</mat-option>
+        <mat-option [value]=10000>10000</mat-option>
+      </mat-autocomplete>
 
     </form>
 
     <div id="controls">
       <button id="cancel" color="warn" mat-raised-button (click)="cancel()">Cancel</button>
-      <button id="enter" color="primary" mat-raised-button (click)="enter()">Enter</button>
+      <button id="enter" color="primary" mat-raised-button (click)="enter()" [disabled]="!valid()">Enter</button>
     </div>
 
   </div>
