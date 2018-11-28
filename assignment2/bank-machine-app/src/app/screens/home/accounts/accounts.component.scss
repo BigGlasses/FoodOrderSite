@@ -22,11 +22,11 @@
 
 .tx-row-header {
   background-image: linear-gradient(45deg, rgba(mat-color($primary), 0.05) 0%, rgba(mat-color($primary), 0.2));
-  font-size: .6em;
+  font-size: .8em;
   font-weight: normal;
 }
 .tx-row {
-  font-size: .6em;
+  font-size: .8em;
   font-weight: lighter;
 
   & > td {
