@@ -1,3 +1,5 @@
+@import "~src/theme";
+
 :host {
   justify-content: center;
   flex: 1 1 100%;
@@ -7,6 +9,14 @@
   //margin-bottom: 16px;
   padding: 0;
 }
+
+.screen-header {
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.05) 30%, rgba(0, 0, 255, 0.1));
+  //background-image: linear-gradient(45deg, rgba(white, .05) 0%, rgba(white, .2));
+  //background-image: linear-gradient(45deg, rgba(mat-color($primary), .5) 0%, rgba(mat-color($primary), 1));
+  background-color: mat-color($primary);
+}
+
 .screen-container {
   display: flex;
   flex-direction: column;
@@ -15,21 +25,12 @@
   width: 100%;
   align-self: center;
   flex: 1;
-  //flex: 1 1 100%;
-  //padding: 36px;
 
-  //padding-left: 0;
-  //padding-right: 0;
   padding: 0;
-//margin: 8px;
 
-  //min-height: 300px;
-  //max-height: 500px;
-
-  //min-width: 450px;
-  //max-width: 650px;
-
-  //margin: 8px
+  & > mat-toolbar > mat-toolbar-row {
+    @extend .screen-header;
+  }
 }
 .content-container {
 
