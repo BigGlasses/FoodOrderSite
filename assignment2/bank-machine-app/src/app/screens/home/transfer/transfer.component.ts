@@ -60,8 +60,11 @@ export class TransferComponent implements OnInit {
   }
 
   valid() {
-    return this.options.get('toAccount').value !== '' &&
-      this.options.get('fromAccount').value !== '' &&
+    const to = this.options.get('toAccount').value;
+    const from = this.options.get('fromAccount').value;
+    return to !== '' &&
+      from !== '' &&
+      to !== from &&
       this.options.get('amount').value !== '';
   }
 }

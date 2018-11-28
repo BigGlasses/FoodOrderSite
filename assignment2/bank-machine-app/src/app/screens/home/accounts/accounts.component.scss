@@ -1,8 +1,17 @@
 @import "../../screen-styles";
-
-
+//@import "~src/variables";
+//@import "~src/styles";
+@import "~src/theme";
 .tx-table {
   margin-left: 1em;
+
+  & tr:nth-child(odd) {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.1))
+  }
+
+  & tr:hover {
+    background-image: linear-gradient(45deg, rgba(mat-color($primary), 0.01) 0%, rgba(mat-color($primary), 0.1));
+  }
 }
 
 .tx-table-title {
@@ -11,6 +20,7 @@
 }
 
 .tx-row-header {
+  background-image: linear-gradient(45deg, rgba(mat-color($primary), 0.05) 0%, rgba(mat-color($primary), 0.2));
   font-size: .6em;
   font-weight: normal;
 }
@@ -30,4 +40,24 @@
     //  max-width: 100px;
     //}
   }
+}
+
+@keyframes flashColor
+{
+  0%   {background: rgba(mat-color($primary), 0.0);}
+  //25%  {background: yellow;}
+  //50%  {background: blue;}
+  //75%  {background: green;}
+  50% {background: rgba(mat-color($primary), 0.65);}
+  100% {background: rgba(mat-color($primary), 0);}
+}
+
+.new-row {
+  //background: rgba(mat-color($primary), 0.2);
+
+  animation: flashColor .5s ease;
+  animation-delay: 500ms;
+  //transition-duration: 1s;
+  //animation-duration: 1s;
+  animation-iteration-count: 2;
 }

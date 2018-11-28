@@ -13,7 +13,7 @@ export class Transaction {
 }
 
 export const SAVINGS = 'SAVINGS',
-  CHECKING = 'CHECKING';
+  CHEQUING = 'CHEQUING';
 
 export class Account {
 
@@ -56,6 +56,7 @@ export class User {
     // this.accounts[from].applyTransaction(trans);
     // this.accounts[to].applyTransaction(trans);
     console.log('Status: ', JSON.stringify(this.accounts));
+    return trans;
   }
 
   public deposit(to: number, amount: number) {
@@ -64,6 +65,7 @@ export class User {
     this.applyTransaction(this.accounts[to], trans);
     // this.accounts[to].applyTransaction(trans);
     console.log('Status: ', JSON.stringify(this.accounts));
+    return trans;
   }
 
   public withdraw(from: number, amount: number) {
@@ -71,6 +73,7 @@ export class User {
     console.log('Withdraw: ', JSON.stringify(trans));
     this.applyTransaction(this.accounts[from], trans);
     console.log('Status: ', JSON.stringify(this.accounts));
+    return trans;
   }
 
   public createAccount(type: string, balance: number = 0) {
@@ -102,9 +105,9 @@ export class User {
   }
 
   public init() {
-    // this.createAccount(CHECKING, 1000);
+    // this.createAccount(CHEQUING, 1000);
     // this.createAccount(SAVINGS, 10000);
-    let idA = this.createAccount(CHECKING);
+    let idA = this.createAccount(CHEQUING);
     this.deposit(idA, 1000);
     this.deposit(idA, 500);
     this.deposit(idA, 100);

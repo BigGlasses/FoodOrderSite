@@ -18,6 +18,7 @@ export class AccountsComponent implements OnInit {
   // amount = new FormControl('');
   options: FormGroup;
 
+  lastTx: Date;
   constructor(private fb: FormBuilder,
               private tx: TransactionService,
               private auth: AuthService,
@@ -25,6 +26,11 @@ export class AccountsComponent implements OnInit {
               private snackBar: MatSnackBar) {
     this.config.screenTitle = this.title;
     this.config.pastHome = true;
+
+
+    // Take it once to flash the new row
+    this.lastTx = this.tx.lastTx || new Date();
+    this.tx.lastTx = new Date();
 
     this.user = this.auth.getCurrentUser();
     console.log(this.title, 'user: ', this.user);

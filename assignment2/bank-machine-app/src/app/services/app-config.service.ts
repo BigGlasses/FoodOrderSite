@@ -11,6 +11,7 @@ export class AppConfigService {
   user: object;
   screenTitle: string;
   txSuccessful = false;
+  lastTx: Date;
 
   constructor(private router: Router) { }
 

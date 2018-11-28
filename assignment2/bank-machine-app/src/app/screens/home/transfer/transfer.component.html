@@ -12,7 +12,7 @@
       <mat-form-field>
         <!--<mat-select placeholder="Color" [formControl]="account" formControlName="color">-->
         <mat-select placeholder="From Account" label="Account" formControlName="fromAccount">
-          <mat-option *ngFor="let account of user.accounts" [value]="account.id">
+          <mat-option  *ngFor="let account of user.accounts" [value]="account.id">
             <div fxLayout="row" fxLayoutAlign="space-between">
               <div>{{account.type + ' '}}</div>
               <div>${{account.balance}}</div>

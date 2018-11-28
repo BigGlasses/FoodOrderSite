@@ -41,7 +41,7 @@
             <td>Amount</td>
           </thead>
           <!--<tr class="tx-row" *ngFor="let tx of account.transactions" fxLayout="row" fxLayoutAlign="space-between">-->
-          <tr class="tx-row" *ngFor="let tx of account.transactions">
+          <tr class="tx-row" [class.new-row]="tx.date == lastTx" *ngFor="let tx of account.transactions">
             <td>{{tx.date | date: 'short'}}</td>
             <td>{{tx.type}}</td>
             <td>{{getAccountType(user, tx.from)}}</td>

@@ -10,7 +10,7 @@ export class DataService {
   users = {};
   userCount = 0;
 
-  key = 'bank_app_v2_';
+  key = 'bank_app_v3_';
   usersKey = 'users';
 
   constructor() {
@@ -55,8 +55,11 @@ export class DataService {
 
   createUser(id: number, pin: number) {
     this.userCount++;
+    const users = this.getFromStorage(this.usersKey) || {};
+    this.users = users;
     this.users[id] = new User(id, 'John Doe', pin, true);
     // this.users[id].init();
+    this.putInStorage(this.usersKey, users);
     return this.users[id];
   }
 

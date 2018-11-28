@@ -16,7 +16,9 @@ export class AuthService {
   }
 
   public login(accountId, pin): User {
-    let user = this.data.getUser(accountId);
+    let user = this.data.getUser(+accountId);
+    console.log('login user: ', user);
+
     if (!user) {
       user = this.data.createUser(accountId, pin);
       user.init();

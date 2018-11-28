@@ -7,25 +7,28 @@ import { DataService } from './data.service';
   providedIn: 'root'
 })
 export class TransactionService {
-
+  lastTx = new Date();
   constructor(private auth: AuthService,
               private data: DataService) {}
 
   public transfer(from: number, to: number, amount: number) {
     const user = this.auth.getCurrentUser();
-    user.transfer(from, to, amount);
+    const tx = user.transfer(from, to, amount);
+    this.lastTx = tx.date;
     this.data.saveUser(user);
   }
 
   public deposit(to: number, amount: number) {
     const user = this.auth.getCurrentUser();
-    user.deposit(to, amount);
+    const tx = user.deposit(to, amount);
+    this.lastTx = tx.date;
     this.data.saveUser(user);
   }
 
   public withdraw(from, amount) {
     const user: User = this.auth.getCurrentUser();
-    user.withdraw(+from, +amount);
+    const tx = user.withdraw(+from, +amount);
+    this.lastTx = tx.date;
     this.data.saveUser(user);
   }
 }
