@@ -20,6 +20,7 @@ export class RestaurantComponent implements OnInit {
   sorts: string[] = ["No sort", "Delivery Time", "Price", "Rating"];
   selectedItem: any;
   cart: any[] = [];
+  cartTotal: number;
 
   constructor() {
   }
@@ -78,6 +79,7 @@ export class RestaurantComponent implements OnInit {
   }
 
   loadMenu(restaurant: any) {
+    if (this.cart.length > 0) return;
     this.selectedRestaurant = restaurant;
   }
 
@@ -487,9 +489,18 @@ export class RestaurantComponent implements OnInit {
     }
   }
 
+  editCart(i) {
+    var item = this.cart[i];
+    this.cart.splice(i, 1);
+    this.selectedItem = item;
+  }
   addSelectedToCart() {
     this.cart.push(this.selectedItem);
     this.selectedItem = null;
+    this.cartTotal = this.selectedRestaurant.deliveryFee;
+    for (var i = 0; i < this.cart.length; i ++) {
+      this.cartTotal += this.cart[i].finalPrice;
+    }
   }
 
   check() {
