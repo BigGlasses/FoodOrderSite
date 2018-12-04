@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { restaurants } from './foodmap';
-import { Observable, of, Subscription } from 'rxjs';
+import { of, Subscription } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 
 
@@ -19,7 +19,6 @@ export class RestaurantComponent implements OnInit {
   checkout: boolean = false;
   processing: boolean;
   processingSubscription: Subscription;
-  prcessingTimeout = [];
 
   restaurants: any[];
   selectedRestaurant: any;
@@ -464,23 +463,26 @@ export class RestaurantComponent implements OnInit {
   }
 
 
-  startCheckout(cartDiv) {
-    let html = cartDiv.innerHTML;
+  startCheckout(checkoutBtn) {
+    let html = checkoutBtn.innerHTML;
     if (this.checkout && !this.processing) {
       this.processing = true;
       if (this.processingSubscription) {
         this.processingSubscription.unsubscribe();
       }
-      // this.prcessingTimeout.forEach(i => clearTimeout(i));
-      // this.prcessingTimeout.forEach(i => clearTimeout(i));
-      this.prcessingTimeout = [];
-      cartDiv.innerHTML = '<h4>Processing  <i class="fa fa-spinner fa-spin" style="font-size:24px"></i></h4> ';
+      checkoutBtn.innerHTML =
+        `<h4>
+            Processing  <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+        </h4>`;
       let complete = () => {
-        cartDiv.innerHTML = '<h4><i class="fas fa-check"></i> Order Complete! <i class="fa fa-spinner fa-spin" style="font-size:24px"></i></h4> ';
+        checkoutBtn.innerHTML =
+          `<h4>
+                <i class="fas fa-check"></i> Order Complete! <i class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+          </h4>`;
       };
 
       let done = () => {
-        cartDiv.innerHTML = html;
+        checkoutBtn.innerHTML = html;
         this.cart = [];
         this.ordering = false;
         this.checkout = false;
@@ -497,14 +499,8 @@ export class RestaurantComponent implements OnInit {
         tap(() => {
           done();
         }),
-      ).subscribe( ()=> console.log('Done'));
+      ).subscribe(() => console.log('Done'));
 
-      // this.prcessingTimeout.push(
-      //   setTimeout(processing, 2000)
-      // );
-      // this.prcessingTimeout.push(
-      //   setTimeout(done, 1000)
-      // );
     } else {
       this.checkout = true;
     }
