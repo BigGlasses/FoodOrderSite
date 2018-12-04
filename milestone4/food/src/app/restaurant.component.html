@@ -8,7 +8,7 @@
   </div>
   <div class="col-4"></div>
 </div>
-<div class="row" style="background:black">
+<div class="row" style="background:black; height: 100%;">
 
 
   <div *ngIf="ordering && !checkout" class="col-12 row text-white" style="background:black; height: 15vh">
@@ -47,7 +47,8 @@
 
   </div>
 
-  <div *ngIf="ordering && !checkout" style="background: black; height: 100vh" [ngClass]="{'d-none': selectedItem, 'col-3':selectedItem == undefined}">
+  <div *ngIf="ordering && !checkout" style="background: black; height: 85vh" [ngClass]="{'d-none': selectedItem, 'col-3':selectedItem == undefined}">
+  <!--<div *ngIf="ordering && !checkout" style="background: black; height: 100vh" [ngClass]="{'d-none': selectedItem, 'col-3':selectedItem == undefined}">-->
     <div class="text-center text-white" *ngIf="filteredRestaurants.length == 0">
       <h3> No Restaurants match criteria. </h3>
     </div>
@@ -74,7 +75,15 @@
         </div>
       </div>
     </div>
+    <div style="height: 100%;"></div>
+    <div id="checkoutBtn" #checkoutBtn *ngIf="selectedItem == null && cart.length > 0" class="btn btn-success col-11 align-middle text-center p-2" (click)="startCheckout(checkoutBtn)">
+    <!--<div  #checkoutBtn *ngIf="selectedItem == null && cart.length > 0" class="btn btn-primary card align-middle text-center p-2" (click)="startCheckout(checkoutBtn)">-->
+      <h4 class=""> <span class="badge badge-pill badge-warning">🛒 {{cart.length}}</span>  Checkout </h4>
+      <!--<h4> 🛒 {{cart.length}} item(s) in cart, proceed to checkout. </h4>-->
+    </div>
   </div>
+
+
 
   <div *ngIf="selectedRestaurant && !checkout" style="background: black; height: 85vh; overflow-y: scroll" class="col-9">
 
@@ -169,8 +178,10 @@
   <div #gmap id="map" [ngClass]="{'col-9': ordering, 'col-12' : !ordering, 'd-none' : selectedRestaurant}">
 
   </div>
-  <div id="cart" *ngIf="selectedItem == null && cart.length > 0" class="card align-middle text-center p-2" (click)="startCheckout()">
-    <h4> 🛒 {{cart.length}} item(s) in cart, proceed to checkout. </h4>
+  <div id="cart" #checkoutBtn style="width: 20%;" *ngIf="checkout && selectedItem == null && cart.length > 0" class="btn btn-success align-middle text-center p-2" (click)="startCheckout(checkoutBtn)">
+  <!--<div id="cart" #checkoutBtn *ngIf="selectedItem == null && cart.length > 0" class="card align-middle text-center p-2" (click)="startCheckout(checkoutBtn)">-->
+    <h4 class=""> <span class="badge badge-success">🛒 {{cart.length}}</span>Checkout Now </h4>
+    <!--<h4> 🛒 {{cart.length}} item(s) in cart, proceed to checkout. </h4>-->
   </div>
 
   <div *ngIf="checkout" class="col-9" style="height: 50vh">

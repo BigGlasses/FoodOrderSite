@@ -47,3 +47,10 @@
   width:30px;
   height:30px;
 }
+
+#checkoutBtn {
+  position: absolute;
+  bottom: 2.1vh;
+  width: 93%;
+  justify-content: center;
+}
