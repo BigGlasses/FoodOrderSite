@@ -1,5 +1,8 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { restaurants } from './foodmap';
+import { Observable, of, Subscription } from 'rxjs';
+import { delay, tap } from 'rxjs/operators';
+
 
 declare const google: any;
 
@@ -14,6 +17,9 @@ export class RestaurantComponent implements OnInit {
   map: any;
   ordering: boolean = false;
   checkout: boolean = false;
+  processing: boolean;
+  processingSubscription: Subscription;
+  prcessingTimeout = [];
 
   restaurants: any[];
   selectedRestaurant: any;
@@ -457,17 +463,48 @@ export class RestaurantComponent implements OnInit {
     this.updateItem();
   }
 
+
   startCheckout(cartDiv) {
     let html = cartDiv.innerHTML;
-    if (this.checkout) {
-      cartDiv.innerHTML = '<h4><i class="fas fa-check"></i> Order Complete!</h4>';
-      setTimeout(() => {
+    if (this.checkout && !this.processing) {
+      this.processing = true;
+      if (this.processingSubscription) {
+        this.processingSubscription.unsubscribe();
+      }
+      // this.prcessingTimeout.forEach(i => clearTimeout(i));
+      // this.prcessingTimeout.forEach(i => clearTimeout(i));
+      this.prcessingTimeout = [];
+      cartDiv.innerHTML = '<h4>Processing  <i class="fa fa-spinner fa-spin" style="font-size:24px"></i></h4> ';
+      let complete = () => {
+        cartDiv.innerHTML = '<h4><i class="fas fa-check"></i> Order Complete! <i class="fa fa-spinner fa-spin" style="font-size:24px"></i></h4> ';
+      };
+
+      let done = () => {
         cartDiv.innerHTML = html;
         this.cart = [];
         this.ordering = false;
         this.checkout = false;
         this.selectedRestaurant = null;
-      }, 3000);
+        this.processing = false;
+      };
+
+      this.processingSubscription = of('').pipe(
+        delay(2000),
+        tap(() => {
+          complete();
+        }),
+        delay(1000),
+        tap(() => {
+          done();
+        }),
+      ).subscribe( ()=> console.log('Done'));
+
+      // this.prcessingTimeout.push(
+      //   setTimeout(processing, 2000)
+      // );
+      // this.prcessingTimeout.push(
+      //   setTimeout(done, 1000)
+      // );
     } else {
       this.checkout = true;
     }
