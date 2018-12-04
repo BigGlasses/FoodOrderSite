@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-
+declare const google: any;
 @Component({
   selector: 'app-restaurants-root',
   templateUrl: './restaurant.component.html',
