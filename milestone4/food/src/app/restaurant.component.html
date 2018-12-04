@@ -1,0 +1,202 @@
+<div *ngIf="!ordering" style="position: fixed; left:0; bottom: 0; z-index:1000; margin-bottom: 10vh" class="container-fluid row">
+
+  <div class="col-4"></div>
+  <div class="col-4" style="text-align: center">
+    <p style="color:white"> 1280 Main Street West </p>
+    <button type="button" class="btn btn-primary btn-lg" (click)="ordering=true">Begin Ordering</button>
+    <p style="color:white"> Average wait time: 45 minutes </p>
+  </div>
+  <div class="col-4"></div>
+</div>
+<div class="row" style="background:black">
+
+
+  <div *ngIf="ordering && !checkout" class="col-12 row text-white" style="background:black; height: 15vh">
+
+    <div class="col-4 text-center">
+      <h3> Sort By </h3>
+      <select class="form-control" [(ngModel)]="sortBy" (change)="changeSort()">
+        <option *ngFor="let sort of sorts" [value]="sort">{{sort}}</option>
+      </select>
+    </div>
+
+    <div class="col-4 text-white text-center">
+      <h1 class="align-middle display-3"> 4HC3ats™ </h1>
+    </div>
+
+    <div class="col-4">
+      <div class="row">
+        <div class="col-6 text-center p-1">
+          <button [ngClass]="{'btn-secondary': tags.indexOf('halal') == -1, 'btn-primary': tags.indexOf('halal') != -1}" class="btn btn-lg btn-block"
+            (click)="toggleTag('halal')">Halal</button>
+        </div>
+        <div class="col-6 text-center p-1" [ngClass]="{active: tags.indexOf('vegan') != -1}">
+          <button [ngClass]="{'btn-secondary': tags.indexOf('vegan') == -1, 'btn-primary': tags.indexOf('vegan') != -1}" class="btn btn-lg btn-block"
+            (click)="toggleTag('vegan')">Vegan</button>
+        </div>
+        <div class="col-6 text-center p-1" [ngClass]="{active: tags.indexOf('vegetarian') != -1}">
+          <button [ngClass]="{'btn-secondary': tags.indexOf('vegetarian') == -1, 'btn-primary': tags.indexOf('vegetarian') != -1}"
+            class="btn btn-lg btn-block" (click)="toggleTag('vegetarian')">Vegetarian</button>
+        </div>
+        <div class="col-6 text-center p-1" [ngClass]="{active: tags.indexOf('gluten-free') != -1}">
+          <button [ngClass]="{'btn-secondary': tags.indexOf('gluten-free') == -1, 'btn-primary': tags.indexOf('gluten-free') != -1}"
+            class="btn btn-lg btn-block" (click)="toggleTag('gluten-free')">Gluten-Free</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="ordering && !checkout" style="background: black; height: 100vh" [ngClass]="{'d-none': selectedItem, 'col-3':selectedItem == undefined}">
+    <div class="text-center text-white" *ngIf="filteredRestaurants.length == 0">
+      <h3> No Restaurants match criteria. </h3>
+    </div>
+    <div (click)="loadMenu(restaurant)" *ngFor="let restaurant of filteredRestaurants; let i = index" [attr.data-index]="i" class="card restaurantcard text-white bg-primary my-3 p-2"
+      [ngClass]="{'bg-dark': selectedRestaurant != restaurant}">
+      <div class="row">
+        <div class="col-9 text-center">
+          <h4> {{ restaurant.name }} </h4>
+        </div>
+        <div class="col-3 text-center">
+          {{restaurant.showTags}}
+        </div>
+        <div class="col-6 text-center">
+          {{ restaurant.money }}
+        </div>
+        <div class="col-6 text-center">
+          🚚 {{ restaurant.deliveryTime }} minutes
+        </div>
+        <div class="col-6 text-center">
+          {{ restaurant.rating }} ⭐
+        </div>
+        <div class="col-6 text-center">
+          {{ restaurant.deliveryFee }} minutes
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="selectedRestaurant && !checkout" style="background: black; height: 85vh; overflow-y: scroll" class="col-9">
+
+    <div class="text-white" *ngFor="let category of selectedRestaurant.menu; let i = index" [attr.data-index]="i">
+      <h1 class="display-4"> {{category.title}}</h1>
+      <div class="row">
+        <div *ngFor="let item of category.items; let j = index" [attr.data-index]="j" class="col-4">
+          <div class="card itemcard m-1 p-1 card text-white bg-primary" (click)="selectItem(item)" [ngClass]="{'bg-danger': !validItem(item), 'bg-dark': validItem(item) && (selectedItem == null || (selectedItem != null && selectedItem.name != item.name))}">
+            <img [src]="item.imageSrc" class="menuImage rounded mx-auto d-block" alt="...">
+            <div class="row">
+              <div class="col-9">
+                <h3> {{item.name}} </h3>
+              </div>
+              <div class="col-3">
+                <h3 *ngIf="item.customize">⚙</h3>
+              </div>
+            </div>
+
+            <p class="lead"> ${{item.basePrice}} </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div *ngIf="selectedItem && !checkout" style="background: black; height: 85vh; overflow-y: scroll" class="col-3 text-white text-center">
+    <h2>{{selectedItem.name}}</h2>
+    <h3>Base Price: ${{selectedItem.basePrice}}</h3>
+    <div *ngFor="let custom of selectedItem.customize; let i = index" [attr.data-index]="i">
+      <div class="row">
+        <div class="col-6 text-left">
+          <h3> {{custom.name}} </h3>
+        </div>
+
+        <div class="col-6 text-right">
+          <h3 *ngIf="custom.required"> Required</h3>
+        </div>
+
+      </div>
+      <div *ngIf="custom.required" class="form-group">
+        <div *ngFor="let option of custom.options; let j = index" [attr.data-index]="j" class="row">
+          <div class="col-6 text-left inline-field">
+            <h5>
+              <input (change)="updateItem()" type="radio" [name]="i + 'op' + j" [(ngModel)]="custom.selected" [value]="option">
+              <label>
+                {{option.name}}
+              </label>
+            </h5>
+          </div>
+          <div class="col-6 text-right">
+            <h3 *ngIf="option.price != 0"> {{getSign(option.price)}}${{abs(option.price).toFixed(2)}} </h3>
+          </div>
+
+        </div>
+      </div>
+      <div *ngIf="!custom.required" class="form-group">
+        <div *ngFor="let option of custom.options; let j = index" [attr.data-index]="j" class="row">
+          <div class="col-6 text-left inline-field">
+            <h5>
+              <input (change)="updateItem()" type="checkbox" [name]="i + 'op' + j" [(ngModel)]="option.enabled">
+              <label class="checkbox-inline">
+                {{option.name}}
+              </label>
+            </h5>
+          </div>
+          <div class="col-6 text-right">
+            <h3 *ngIf="option.price != 0"> {{getSign(option.price)}}${{abs(option.price).toFixed(2)}} </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-left inline-field">
+        <h5>
+          <input type="text" [(ngModel)]="selectedItem.notes">
+          <br>
+          <label>
+            Driver notes.
+          </label>
+        </h5>
+      </div>
+
+      <div class="col-12 text-center p-1" [ngClass]="{active: itemIsValid()}">
+        <button class="btn btn-primary btn-lg btn-block" (click)="addSelectedToCart()">Add to cart (${{selectedItem.finalPrice.toFixed(2)}})</button>
+      </div>
+      <div class="col-12 text-center p-1">
+        <button class="btn btn-danger btn-lg btn-block" (click)="selectedItem = null">Cancel Item</button>
+      </div>
+    </div>
+  </div>
+  <div #gmap id="map" [ngClass]="{'col-9': ordering, 'col-12' : !ordering, 'd-none' : selectedRestaurant}">
+
+  </div>
+  <div id="cart" *ngIf="selectedItem == null && cart.length > 0" class="card align-middle text-center p-2" (click)="startCheckout()">
+    <h4> 🛒 {{cart.length}} item(s) in cart, proceed to checkout. </h4>
+  </div>
+
+  <div *ngIf="checkout" class="row" style="background:black">
+    <div class="col-6" style="height: 50vh">
+      <div class="row">
+        <div *ngFor="let item of cart; let j = index" [attr.data-index]="j" class="col-4">
+          <div class="card itemcard m-1 p-1 card text-white bg-dark">
+            <img [src]="item.imageSrc" class="menuImage rounded mx-auto d-block" alt="...">
+            <div class="row">
+              <div class="col-9">
+                <h3> {{item.name}} </h3>
+              </div>
+              <div class="col-3">
+                <h3 *ngIf="item.customize">⚙</h3>
+              </div>
+            </div>
+
+            <p class="lead"> ${{item.basePrice}} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
