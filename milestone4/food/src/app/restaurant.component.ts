@@ -108,7 +108,7 @@ export class RestaurantComponent implements OnInit {
 
   initMap() {
     // The location of Uluru
-    var uluru = {lat: 43.2609, lng: -79.9192};
+    var uluru = { lat: 43.2609, lng: -79.9192 };
     // The map, centered at Uluru
     this.map = new google.maps.Map(
       this.gmapElement.nativeElement, {
@@ -427,7 +427,7 @@ export class RestaurantComponent implements OnInit {
     var marker = new google.maps.Marker({
       position: restaurant.latLng,
       map: this.map,
-      label: {text: restaurant.name, color: 'white'}
+      label: { text: restaurant.name, color: 'white' }
     });
     google.maps.event.addListener(marker, 'mouseover', function (evt) {
       var label = this.getLabel();
@@ -544,6 +544,7 @@ export class RestaurantComponent implements OnInit {
   }
 
   addSelectedToCart() {
+    this.selectedItem.restaurant = this.selectedRestaurant;
     this.cart.push(this.selectedItem);
     this.selectedItem = null;
     this.cartTotal = this.selectedRestaurant.deliveryFee;
