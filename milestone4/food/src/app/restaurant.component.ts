@@ -87,6 +87,11 @@ export class RestaurantComponent implements OnInit {
   }
 
   loadMenu(restaurant: any) {
+    if(this.selectedRestaurant == restaurant){
+      this.selectedRestaurant = null;
+      return;
+    }
+
     if (this.cart.length > 0) return;
     this.selectedRestaurant = restaurant;
   }
@@ -427,7 +432,8 @@ export class RestaurantComponent implements OnInit {
     var marker = new google.maps.Marker({
       position: restaurant.latLng,
       map: this.map,
-      label: { text: restaurant.name, color: 'white' }
+      label: { text: restaurant.name, color: 'white' },
+      title: restaurant.name
     });
     google.maps.event.addListener(marker, 'mouseover', function (evt) {
       var label = this.getLabel();
@@ -439,6 +445,12 @@ export class RestaurantComponent implements OnInit {
       label.color = 'white';
       this.setLabel(label);
     });
+    marker.restaurant = restaurant;
+    marker.controller = this;
+    marker.addListener('click', function() {
+      marker.controller.loadMenu(marker.restaurant);
+    });
+    
     return marker;
   }
 
