@@ -29,6 +29,10 @@
   height: 140px;
 }
 
+.noclick{
+  pointer-events: none;
+}
+
 .restaurantcard{
   cursor: pointer;
 }

@@ -97,7 +97,7 @@
       <h1 class="display-4"> {{category.title}}</h1>
       <div class="row">
         <div *ngFor="let item of category.items; let j = index" [attr.data-index]="j" class="col-4">
-          <div class="card itemcard m-1 p-1 card text-white bg-primary" (click)="selectItem(item)" [ngClass]="{'bg-danger': !validItem(item), 'bg-dark': validItem(item) && (selectedItem == null || (selectedItem != null && selectedItem.name != item.name))}">
+          <div class="card itemcard m-1 p-1 card text-white bg-primary" (click)="selectItem(item)" [ngClass]="{'bg-danger noclick': !validItem(item), 'bg-dark': validItem(item) && (selectedItem == null || (selectedItem != null && selectedItem.name != item.name))}">
             <img [src]="item.imageSrc" class="menuImage rounded mx-auto d-block" alt="...">
             <div class="row">
               <div class="col-9">
@@ -188,12 +188,16 @@
     (click)="startCheckout(checkoutBtn)">
     <!--<div id="cart" #checkoutBtn *ngIf="selectedItem == null && cart.length > 0" class="card align-middle text-center p-2" (click)="startCheckout(checkoutBtn)">-->
     <h4 class="">
-      <span class="badge badge-success">🛒 {{cart.length}}</span>Checkout Now </h4>
+      <span class="badge badge-success text-center">🛒 {{cart.length}} Item | Subtotal: ${{cartTotal.toFixed(2)}} </span> <br> Checkout Now </h4>
     <!--<h4> 🛒 {{cart.length}} item(s) in cart, proceed to checkout. </h4>-->
   </div>
 
   <div *ngIf="checkout" class="col-9" style="height: 50vh">
     <h1 class="display-3 text-center text-white"> Food Cart </h1>
+
+    <h1 class="display-3 text-white"> {{cart[0].restaurant.name}} </h1>
+    <h1 class="lead text-white"> 1280 main street west </h1>
+    <hr>
     <div class="row">
       <div *ngFor="let item of cart; let j = index" [attr.data-index]="j" class="col-4">
         <div class="card itemcard m-1 p-1 card text-white bg-dark" (click)="editCart(j)">
@@ -250,6 +254,16 @@
         </div>
         <div class="col-6">
           <input style="width: 100%" class="form-control" type="text">
+        </div>
+        <div class="col-6">
+          <h5>
+            <label class="text-white">
+              Address
+            </label>
+          </h5>
+        </div>
+        <div class="col-6">
+          <input style="width: 100%" class="form-control" type="text" value="1280 Main street west" required>
         </div>
       </div>
     </div>
