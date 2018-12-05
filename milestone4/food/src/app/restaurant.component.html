@@ -48,7 +48,7 @@
   </div>
 
   <div *ngIf="ordering && !checkout" style="background: #111; height: 85vh" [ngClass]="{'d-none': selectedItem, 'col-3':selectedItem == undefined}">
-  <!--<div *ngIf="ordering && !checkout" style="background: black; height: 100vh" [ngClass]="{'d-none': selectedItem, 'col-3':selectedItem == undefined}">-->
+    <!--<div *ngIf="ordering && !checkout" style="background: black; height: 100vh" [ngClass]="{'d-none': selectedItem, 'col-3':selectedItem == undefined}">-->
     <div class="text-center text-white" *ngIf="filteredRestaurants.length == 0">
       <h3> No Restaurants match criteria. </h3>
     </div>
@@ -76,9 +76,11 @@
       </div>
     </div>
     <div style="height: 100%;"></div>
-    <div id="checkoutBtn"  #checkoutBtn *ngIf="selectedItem == null && cart.length > 0" class="btn btn-success col-11 align-middle text-center p-2" (click)="startCheckout(checkoutBtn)">
-    <!--<div  #checkoutBtn *ngIf="selectedItem == null && cart.length > 0" class="btn btn-primary card align-middle text-center p-2" (click)="startCheckout(checkoutBtn)">-->
-      <h4 class=""> <span class="badge badge-pill badge-warning">🛒 {{cart.length}}</span>  Checkout </h4>
+    <div id="checkoutBtn" #checkoutBtn *ngIf="selectedItem == null && cart.length > 0" class="btn btn-success col-11 align-middle text-center p-2"
+      (click)="startCheckout(checkoutBtn)">
+      <!--<div  #checkoutBtn *ngIf="selectedItem == null && cart.length > 0" class="btn btn-primary card align-middle text-center p-2" (click)="startCheckout(checkoutBtn)">-->
+      <h4 class="">
+        <span class="badge badge-pill badge-warning">🛒 {{cart.length}}</span> Checkout </h4>
       <!--<h4> 🛒 {{cart.length}} item(s) in cart, proceed to checkout. </h4>-->
     </div>
   </div>
@@ -86,9 +88,9 @@
 
 
   <div *ngIf="selectedRestaurant && !checkout" style="background: black; height: 85vh; overflow-y: scroll" class="col-9 text-white">
-    
-      <h1 class="display-3"> {{selectedRestaurant.name}} </h1>
-      <h1 class="lead"> 1280 main street west </h1>
+
+    <h1 class="display-3"> {{selectedRestaurant.name}} </h1>
+    <h1 class="lead"> 1280 main street west </h1>
 
     <hr>
     <div class="text-white" *ngFor="let category of selectedRestaurant.menu; let i = index" [attr.data-index]="i">
@@ -163,7 +165,7 @@
     <div class="row">
       <div class="col-12 text-left inline-field">
         <h5>
-          <input type="text" [(ngModel)]="selectedItem.notes">
+          <input class="form-control" type="text" style="width:100%" [(ngModel)]="selectedItem.notes">
           <br>
           <label>
             Driver notes.
@@ -182,9 +184,11 @@
   <div #gmap id="map" [ngClass]="{'col-9': ordering, 'col-12' : !ordering, 'd-none' : selectedRestaurant}">
 
   </div>
-  <div id="cart" #checkoutBtn style="width: 20%;" *ngIf="checkout && selectedItem == null && cart.length > 0" class="btn btn-success align-middle text-center p-2" (click)="startCheckout(checkoutBtn)">
-  <!--<div id="cart" #checkoutBtn *ngIf="selectedItem == null && cart.length > 0" class="card align-middle text-center p-2" (click)="startCheckout(checkoutBtn)">-->
-    <h4 class=""> <span class="badge badge-success">🛒 {{cart.length}}</span>Checkout Now </h4>
+  <div id="cart" #checkoutBtn style="width: 20%;" *ngIf="checkout && selectedItem == null && cart.length > 0" class="btn btn-success align-middle text-center p-2"
+    (click)="startCheckout(checkoutBtn)">
+    <!--<div id="cart" #checkoutBtn *ngIf="selectedItem == null && cart.length > 0" class="card align-middle text-center p-2" (click)="startCheckout(checkoutBtn)">-->
+    <h4 class="">
+      <span class="badge badge-success">🛒 {{cart.length}}</span>Checkout Now </h4>
     <!--<h4> 🛒 {{cart.length}} item(s) in cart, proceed to checkout. </h4>-->
   </div>
 
@@ -235,7 +239,7 @@
           </h5>
         </div>
         <div class="col-6">
-          <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+          <input style="width: 100%" class="form-control" type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
         </div>
         <div class="col-6">
           <h5>
@@ -245,7 +249,7 @@
           </h5>
         </div>
         <div class="col-6">
-          <input type="text">
+          <input style="width: 100%" class="form-control" type="text">
         </div>
       </div>
     </div>
