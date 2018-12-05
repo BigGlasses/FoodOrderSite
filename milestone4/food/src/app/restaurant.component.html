@@ -55,22 +55,22 @@
     <div (click)="loadMenu(restaurant)" *ngFor="let restaurant of filteredRestaurants; let i = index" [attr.data-index]="i" class="card restaurantcard text-white bg-primary my-3 p-2"
       [ngClass]="{'bg-dark': selectedRestaurant != restaurant}">
       <div class="row">
-        <div class="col-9 text-center">
+        <div class="col-9 text-left">
           <h4> {{ restaurant.name }} </h4>
         </div>
-        <div class="col-3 text-center">
+        <div class="col-3 text-right">
           {{restaurant.showTags}}
         </div>
-        <div class="col-6 text-center">
+        <div class="col-6 text-left">
           {{ restaurant.money }}
         </div>
-        <div class="col-6 text-center">
+        <div class="col-6 text-right">
           🚚 {{ restaurant.deliveryTime }} minutes
         </div>
-        <div class="col-6 text-center">
+        <div class="col-6 text-left">
           {{ restaurant.rating }} ⭐
         </div>
-        <div class="col-6 text-center">
+        <div class="col-6 text-right">
           ${{ restaurant.deliveryFee }} Fee
         </div>
       </div>
@@ -85,8 +85,12 @@
 
 
 
-  <div *ngIf="selectedRestaurant && !checkout" style="background: black; height: 85vh; overflow-y: scroll" class="col-9">
+  <div *ngIf="selectedRestaurant && !checkout" style="background: black; height: 85vh; overflow-y: scroll" class="col-9 text-white">
+    
+      <h1 class="display-3"> {{selectedRestaurant.name}} </h1>
+      <h1 class="lead"> 1280 main street west </h1>
 
+    <hr>
     <div class="text-white" *ngFor="let category of selectedRestaurant.menu; let i = index" [attr.data-index]="i">
       <h1 class="display-4"> {{category.title}}</h1>
       <div class="row">

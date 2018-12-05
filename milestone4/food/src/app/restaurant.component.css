@@ -54,3 +54,9 @@
   width: 93%;
   justify-content: center;
 }
+
+hr {
+  color: white;
+  background-color: white;
+  border-color: white;
+}
