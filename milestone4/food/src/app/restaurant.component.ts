@@ -118,6 +118,8 @@ export class RestaurantComponent implements OnInit {
     this.map = new google.maps.Map(
       this.gmapElement.nativeElement, {
         zoom: 17, center: uluru, disableDefaultUI: true,
+        gestureHandling: 'none',
+        zoomControl: false,
         styles: [
           {
             'elementType': 'geometry',
