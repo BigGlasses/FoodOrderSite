@@ -8,7 +8,7 @@
   </div>
   <div class="col-4"></div>
 </div>
-<div class="row" style="background:#111; height: 100%;">
+<div class="row" style="background:#111; height: 100%; overflow-y: scroll">
 
 
   <div *ngIf="ordering && !checkout" class="col-12 row text-white" style="background:#111; height: 15vh">
@@ -192,7 +192,7 @@
     <!--<h4> 🛒 {{cart.length}} item(s) in cart, proceed to checkout. </h4>-->
   </div>
 
-  <div *ngIf="checkout" class="col-12" style="height: 40vh">
+  <div *ngIf="checkout" class="col-12">
     <h1 class="display-3 text-center text-white"> Food Cart </h1>
 
     <h1 class="display-3 text-white"> {{cart[0].restaurant.name}} </h1>
@@ -204,7 +204,7 @@
     <hr>
   </div>
     
-  <div *ngIf="checkout" class="col-12" style="height: 40vh; overflow-y: scroll">
+  <div *ngIf="checkout" class="col-12">
     <div class="row">
       <div *ngFor="let item of cart; let j = index" [attr.data-index]="j" class="col-2">
         <div class="card itemcard m-1 p-1 card text-white bg-dark" (click)="editCart(j)">
@@ -218,12 +218,12 @@
             </div>
           </div>
 
-          <p class="lead"> ${{item.finalPrice}} </p>
+          <p class="lead"> ${{item.finalPrice.toFixed(2)}} </p>
         </div>
       </div>
     </div>
   </div>
-  <div *ngIf="checkout" class="col-6" style="height: 20vh">
+  <div *ngIf="checkout" class="col-6">
     <div class="form-group">
       <div class="row">
         <div class="col-6">
