@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { restaurants } from './foodmap';
 import { of, Subscription } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
+import { debug } from 'util';
 
 
 declare const google: any;
@@ -64,6 +65,7 @@ export class RestaurantComponent implements OnInit {
       }
       else if (this.sortBy == 'Price') {
         this.filteredRestaurants.sort(function (a, b) {
+
           return a.money.length - b.money.length;
         });
       }
