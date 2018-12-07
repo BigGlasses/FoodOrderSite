@@ -55,7 +55,8 @@ let food1 = {
 let food12 = {
   "name": "Vegan Cheese Pizza",
   "basePrice": 3.99,
-  "imageSrc": "./assets/img/veganpizza.webp",
+  "imageSrc": "./assets/img/veggie-pizza.jpg",
+  // "imageSrc": "./assets/img/veganpizza.webp",
   // "imageSrc": "https://img.grouponcdn.com/deal/8DDtq5XRzVnLXEUnPHPd/p2-2048x1229/v1/c700x420.jpg",
   "tags": ["vegan"]
 };
