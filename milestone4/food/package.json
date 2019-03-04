@@ -2,12 +2,7 @@
   "name": "food",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "deploy": "ng build && firebase deploy"
   },
   "private": true,
   "dependencies": {
@@ -44,8 +39,5 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
     "typescript": "~3.1.6"
-  },
-  "scripts": {
-    "deploy": "ng build && firebase deploy"
   }
 }
